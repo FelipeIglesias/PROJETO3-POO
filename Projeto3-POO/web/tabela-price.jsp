@@ -28,8 +28,11 @@
             taxa de juros (%):
             <input type = "text" nome="juros"/>
             <input type = "submit" value="Calcular"/>
+        </form>
+        
             <hr>
-            <table>
+            
+            <table border="1">
                 <tr>
                     <th>Período</th>
                     <th>Saldo Devedor</th>
@@ -41,10 +44,23 @@
                     <tr>
                         <td><%=i%></td>
                         <td><%=(saldoDevedor - amortizacao)%></td>
-                        
+                        <td><%=parcela%></td>
+                        <td>
+                            <%if(i==0){%>
+                                0
+                            <%} else{%>
+                            <%=juros%>
+                            <%}%>
+                        </td>
+                        <td><%=amortizacao%></td>
                     </tr>
+                    <%
+                        juros = juros / 100;
+                        if(i==0){
+                        parcela=(saldoDevedor * juros)/(1-(1/Math.pow(1+juros,periodo)));
+                    }
+                    amortizacao = parcela - juros;%>
                 <%}%>
             </table>
-        </form>
     </body>
 </html>
