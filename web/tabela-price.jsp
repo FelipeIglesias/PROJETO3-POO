@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" import="java.text.DecimalFormat"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +14,7 @@
             double valorJuros = 0;
             double amortizacao = 0;
             double parcela = 0;
+            DecimalFormat decimal = new DecimalFormat("#.##");
             try{
                 saldoDevedor = Double.parseDouble(request.getParameter("saldoDevedor"));
                 periodo = Integer.parseInt(request.getParameter("periodo"));
@@ -52,30 +54,30 @@
                         <%if(saldoDevedor < 1){
                            saldoDevedor = 0; 
                         }%>
-                        <%=saldoDevedor%>
+                        R$<%=decimal.format(saldoDevedor)%>
                     </td>
                     <td>
                         <%if(i==0){%>
-                        0
+                        R$0,00
                         <%}else{%>
-                        <%=parcela%>
+                        R$<%=decimal.format(parcela)%>
                         <%}%>
                     </td>
                     <td>
                         <%if(i==0){%>
-                            0
+                            R$0,00
                             <%valorJuros = saldoDevedor * juros;%>
                         <%}else{%>
-                        <%=valorJuros%>
+                        R$<%=decimal.format(valorJuros)%>
                         <%valorJuros = saldoDevedor * juros;%>
                         <%}%>
                     </td>
                     <td>
                         <%if(i==0){%>
-                            0
+                            R$0,00
                             <%amortizacao = parcela - (saldoDevedor * juros);%>
                         <%}else{%>
-                            <%=amortizacao%>
+                            R$<%=decimal.format(amortizacao)%>
                             <%amortizacao = parcela - (saldoDevedor * juros);%>
                         <%}%>
                     </td>
