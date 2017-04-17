@@ -2,8 +2,9 @@
 <%@ page pageEncoding="UTF-8" %>
 <nav>
     <ul>
-        <li><a href="amorizaco-americana.jsp">Amortização-americana</a></li>
-        <li><a href="Amorizacao-constante.jsp">Amortização-constante</a></li>
+        <li><a href="home.jsp">Home</a></li>
+        <li><a href="amorizaco-americana.jsp">Amortização Americana</a></li>
+        <li><a href="Amortizacao-constante.jsp">Amortização Constante</a></li>
         <li><a href="tabela-price.jsp">Tabela Price</a></li>
     </ul>
 </nav>
