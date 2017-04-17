@@ -10,6 +10,7 @@
             double saldoDevedor = 0;
             int periodo = 0;
             double juros = 0;
+            double valorJuros = 0;
             double amortizacao = 0;
             double parcela = 0;
             try{
@@ -48,6 +49,9 @@
                     <td><%=i%></td>
                     <td>
                         <%saldoDevedor = saldoDevedor - amortizacao;%>
+                        <%if(saldoDevedor < 1){
+                           saldoDevedor = 0; 
+                        }%>
                         <%=saldoDevedor%>
                     </td>
                     <td>
@@ -59,17 +63,20 @@
                     </td>
                     <td>
                         <%if(i==0){%>
-                        0
+                            0
+                            <%valorJuros = saldoDevedor * juros;%>
                         <%}else{%>
-                        <%=(saldoDevedor * juros)%>
+                        <%=valorJuros%>
+                        <%valorJuros = saldoDevedor * juros;%>
                         <%}%>
                     </td>
                     <td>
                         <%if(i==0){%>
                             0
-                        <%}else{%>
                             <%amortizacao = parcela - (saldoDevedor * juros);%>
+                        <%}else{%>
                             <%=amortizacao%>
+                            <%amortizacao = parcela - (saldoDevedor * juros);%>
                         <%}%>
                     </td>
                 </tr>
