@@ -1,5 +1,5 @@
 
-        
+
             function SomenteNumero(e){
                 var tecla;
                      tecla = (window.event)?event.keyCode:e.which;   

@@ -21,16 +21,31 @@
             double amorConst = 0;
             double parConst = 0;
             try{
-                empConst = Double.parseDouble(request.getParameter("emprestimoConst"));
+                empConst= Double.parseDouble(request.getParameter("emprestimoConst"));
                 perConst = Integer.parseInt(request.getParameter("periodoConst"));
                 jurConst = Double.parseDouble(request.getParameter("jurosConst"));
             }catch(Exception e){}
         %>
         
-
+<script>
+            function SomenteNumero(e){
+                var tecla;
+                     tecla = (window.event)?event.keyCode:e.which;   
+                        if((tecla>47 && tecla<58 )) {
+                            return true;
+                        }
+                        else if ( tecla==44 || tecla==46 ){ 
+                            return true;
+                        }
+                        else{
+                alert(" Insira apenas caracteres numericos");
+            return false;
+            }
+        }
+</script>
         <form>
             Valor do empréstimo:
-            <input type = "text" name="emprestimoConst" value="<%=empConst%>" id="em" onkeypress="SomenteNumero()"/>
+            <input type = "text" name="emprestimoConst" value="<%=empConst%>" id="e" onkeypress="SomenteNumero()"/>
             Período:
             <input type = "text" name="periodoConst" value="<%=perConst%>"  onkeypress="SomenteNumero()" />
             taxa de juros (%):
