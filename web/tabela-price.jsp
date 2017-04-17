@@ -22,15 +22,15 @@
         
         <form>
             Valor do empréstimo:
-            <input type = "text" nome="saldoDevedor"/>
+            <input type = "text" name="saldoDevedor" value="<%=saldoDevedor%>"/>
             Período:
-            <input type = "text" nome="periodo"/>
+            <input type = "text" name="periodo" value="<%=periodo%>"/>
             taxa de juros (%):
-            <input type = "text" nome="juros"/>
+            <input type = "text" name="juros" value="<%=juros%>"/>
             <input type = "submit" value="Calcular"/>
         </form>
         
-            <hr>
+            <hr/>
             
             <table border="1">
                 <tr>
@@ -40,26 +40,39 @@
                     <th>Juros</th>
                     <th>Amortização</th>
                 </tr>
-                <%for(int i = 0; i<=periodo;i++){%>
-                    <tr>
-                        <td><%=i%></td>
-                        <td><%=(saldoDevedor - amortizacao)%></td>
-                        <td><%=parcela%></td>
-                        <td>
-                            <%if(i==0){%>
-                                0
-                            <%} else{%>
-                            <%=juros%>
-                            <%}%>
-                        </td>
-                        <td><%=amortizacao%></td>
-                    </tr>
-                    <%
-                        juros = juros / 100;
-                        if(i==0){
-                        parcela=(saldoDevedor * juros)/(1-(1/Math.pow(1+juros,periodo)));
-                    }
-                    amortizacao = parcela - juros;%>
+                <%
+                    juros = juros / 100;
+                    parcela = (saldoDevedor * juros)/(1-(1/Math.pow(1+juros, periodo)));
+                    for(int i = 0; i <= periodo; i++){%>
+                <tr>
+                    <td><%=i%></td>
+                    <td>
+                        <%saldoDevedor = saldoDevedor - amortizacao;%>
+                        <%=saldoDevedor%>
+                    </td>
+                    <td>
+                        <%if(i==0){%>
+                        0
+                        <%}else{%>
+                        <%=parcela%>
+                        <%}%>
+                    </td>
+                    <td>
+                        <%if(i==0){%>
+                        0
+                        <%}else{%>
+                        <%=(saldoDevedor * juros)%>
+                        <%}%>
+                    </td>
+                    <td>
+                        <%if(i==0){%>
+                            0
+                        <%}else{%>
+                            <%amortizacao = parcela - (saldoDevedor * juros);%>
+                            <%=amortizacao%>
+                        <%}%>
+                    </td>
+                </tr>
                 <%}%>
             </table>
     </body>
