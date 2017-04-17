@@ -15,25 +15,26 @@
         <h1>Calculo de Amortização Constante</h1>
         
         <%
-            double emprestimo = 0;
-            int periodo = 0;
-            double juros = 0;
-            double amortizacao = 0;
-            double parcela = 0;
+            double empConst = 0;
+            int perConst = 0;
+            double jurConst = 0;
+            double amorConst = 0;
+            double parConst = 0;
             try{
-                emprestimo = Double.parseDouble(request.getParameter("emprestimo"));
-                periodo = Integer.parseInt(request.getParameter("periodo"));
-                juros = Double.parseDouble(request.getParameter("juros"));
+                empConst = Double.parseDouble(request.getParameter("emprestimoConst"));
+                perConst = Integer.parseInt(request.getParameter("periodoConst"));
+                jurConst = Double.parseDouble(request.getParameter("jurosConst"));
             }catch(Exception e){}
         %>
         
+
         <form>
             Valor do empréstimo:
-            <input type = "text" nome="emprestimo"/>
+            <input type = "text" name="emprestimoConst" value="<%=empConst%>" id="em" onkeypress="SomenteNumero()"/>
             Período:
-            <input type = "text" nome="periodo"/>
+            <input type = "text" name="periodoConst" value="<%=perConst%>"  onkeypress="SomenteNumero()" />
             taxa de juros (%):
-            <input type = "text" nome="juros"/>
+            <input type = "text" name="jurosConst" value="<%=jurConst%>"  onkeypress="SomenteNumero()"/>
             <input type = "submit" value="Calcular"/>
         </form>
         

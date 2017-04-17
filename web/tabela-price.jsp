@@ -26,11 +26,11 @@
         
         <form>
             Valor do empréstimo:
-            <input type = "text" name="saldoDevedor" value="<%=saldoDevedor%>"/>
+            <input type = "text" name="saldoDevedor" value="<%=saldoDevedor%>" onkeypress="SomenteNumero()"/>
             Período:
-            <input type = "text" name="periodo" value="<%=periodo%>"/>
+            <input type = "text" name="periodo" value="<%=periodo%>" onkeypress="SomenteNumero()"/>
             taxa de juros (%):
-            <input type = "text" name="juros" value="<%=juros%>"/>
+            <input type = "text" name="juros" value="<%=juros%>" onkeypress="SomenteNumero()"/>
             <input type = "submit" value="Calcular"/>
         </form>
         
