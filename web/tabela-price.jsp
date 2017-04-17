@@ -7,7 +7,7 @@
         <title>Tabela Price</title>
     </head>
     <body>
-        <%@include file="WEB-INF/jspf/menu.jspf" %>%>
+        <%@include file="WEB-INF/jspf/menu.jspf" %>
         <%
             double saldoDevedor = 0;
             int periodo = 0;
