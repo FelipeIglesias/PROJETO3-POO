@@ -21,45 +21,57 @@
             double amortizacao = 0;
             double parcela = 0;
             DecimalFormat decimal = new DecimalFormat("#.##");
-            try{
+            try {
                 saldoDevedor = Double.parseDouble(request.getParameter("saldoDevedor"));
                 periodo = Integer.parseInt(request.getParameter("periodo"));
                 juros = Double.parseDouble(request.getParameter("juros"));
-            }catch(Exception e){}
-        %>
-        
-        <script>
-            function SomenteNumero(e){
-                var tecla;
-                     tecla = (window.event)?event.keyCode:e.which;   
-                        if((tecla>47 && tecla<58 )) {
-                            return true;
-                        }
-                        else if ( tecla==44 || tecla==46 ){ 
-                            return true;
-                        }
-                        else{
-                alert(" Insira apenas caracteres numericos");
-            return false;
+            } catch (Exception e) {
             }
-        }
-</script>
-        
-        <h1>Tabela Price</h1>
-        
-        <form>
-            Valor do empréstimo:
-            <input type = "text" name="saldoDevedor" value="<%=saldoDevedor%>" onkeypress="SomenteNumero()"/>
-            Período:
-            <input type = "text" name="periodo" value="<%=periodo%>" onkeypress="SomenteNumero()"/>
-            taxa de juros (%):
-            <input type = "text" name="juros" value="<%=juros%>" onkeypress="SomenteNumero()"/>
-            <input type = "submit" value="Calcular"/>
-        </form>
-        
+        %>
+
+        <script>
+            function SomenteNumero(e) {
+                var tecla;
+                tecla = (window.event) ? event.keyCode : e.which;
+                if ((tecla > 47 && tecla < 58)) {
+                    return true;
+                } else if (tecla == 44 || tecla == 46) {
+                    return true;
+                } else {
+                    alert(" Insira apenas caracteres numericos");
+                    return false;
+                }
+            }
+        </script>
+        <div class="container">
+            <div class="page-header">
+                <h1>Tabela Price</h1>
+            </div>
+            <div class="form container" >
+                <table style="spacing: 25px 25px 25px 25px;">
+                    <form class="form-horizontal" action="" method="GET">
+                        <tr>
+                            <td><label class="control-label">Valor do empréstimo: </label></td>
+                            <td><input type = "text" name="saldoDevedor" value="<%=saldoDevedor%>" onkeypress="SomenteNumero()"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="taxa">taxa de juros (%):</label></td>
+                            <td><input type = "text" name="juros" value="<%=juros%>" onkeypress="SomenteNumero()"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="prazo">Período:</label></td>
+                            <td><input type = "text" name="periodo" value="<%=periodo%>" onkeypress="SomenteNumero()"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="submit" class="btn btn-primary pull-right" value="Calcular"></td>
+                        </tr>   
+                    </form>
+                    
+                </table>
+            </div>
             <hr/>
-            
-            <table border="1">
+
+            <table class="table">
                 <tr>
                     <th>Período</th>
                     <th>Saldo Devedor</th>
@@ -69,47 +81,48 @@
                 </tr>
                 <%
                     juros = juros / 100;
-                    parcela = (saldoDevedor * juros)/(1-(1/Math.pow(1+juros, periodo)));
-                    for(int i = 0; i <= periodo; i++){%>
+                    parcela = (saldoDevedor * juros) / (1 - (1 / Math.pow(1 + juros, periodo)));
+                    for (int i = 0; i <= periodo; i++) {%>
                 <tr>
                     <td><%=i%></td>
                     <td>
                         <%saldoDevedor = saldoDevedor - amortizacao;%>
-                        <%if(saldoDevedor < 1){
-                           saldoDevedor = 0; 
-                        }%>
+                        <%if (saldoDevedor < 1) {
+                                saldoDevedor = 0;
+                            }%>
                         R$<%=decimal.format(saldoDevedor)%>
                     </td>
                     <td>
-                        <%if(i==0){%>
+                        <%if (i == 0) {%>
                         R$0,00
-                        <%}else{%>
+                        <%} else {%>
                         R$<%=decimal.format(parcela)%>
                         <%}%>
                     </td>
                     <td>
-                        <%if(i==0){%>
-                            R$0,00
-                            <%valorJuros = saldoDevedor * juros;%>
-                        <%}else{%>
+                        <%if (i == 0) {%>
+                        R$0,00
+                        <%valorJuros = saldoDevedor * juros;%>
+                        <%} else {%>
                         R$<%=decimal.format(valorJuros)%>
                         <%valorJuros = saldoDevedor * juros;%>
                         <%}%>
                     </td>
                     <td>
-                        <%if(i==0){%>
-                            R$0,00
-                            <%amortizacao = parcela - (saldoDevedor * juros);%>
-                        <%}else{%>
-                            R$<%=decimal.format(amortizacao)%>
-                            <%amortizacao = parcela - (saldoDevedor * juros);%>
+                        <%if (i == 0) {%>
+                        R$0,00
+                        <%amortizacao = parcela - (saldoDevedor * juros);%>
+                        <%} else {%>
+                        R$<%=decimal.format(amortizacao)%>
+                        <%amortizacao = parcela - (saldoDevedor * juros);%>
                         <%}%>
                     </td>
                 </tr>
                 <%}%>
             </table>
-            <%@include file="WEB-INF/jspf/rodape.jspf" %>
-            <!-- Importa jQuery -->
+        </div>
+        <%@include file="WEB-INF/jspf/rodape.jspf" %>
+        <!-- Importa jQuery -->
         <script src="js/jquery-3.1.1.min.js"></script>
         <script src="js/bootstrap.js"></script>
     </body>
