@@ -25,6 +25,18 @@
         left: 0;
         width: 100%;
     }
+    input {
+        color: black !important;
+        text-align: right;
+    }
+    .hero-unit {
+        position: relative;
+    }
+    .hero-unit a {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
 </style>
         
 <ul class="nav nav-tabs">

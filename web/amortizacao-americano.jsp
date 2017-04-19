@@ -18,7 +18,6 @@
     <body>
         <%@include file="WEB-INF/jspf/menu.jspf" %>
         <br>
-        <br>
         <%
             float valor = 0, taxa = 0;
             int prazo = 0;
@@ -50,7 +49,7 @@
                             <td><input type="number" name="prazo" value="<%=prazo%>"></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="submit" class="btn btn-primary pull-right" value="Calcular">Calcular</td>
+                            <td colspan="2"><input type="submit" class="btn btn-primary pull-right" value="Calcular"></td>
                         </tr>   
                     </form>
                 </table>
