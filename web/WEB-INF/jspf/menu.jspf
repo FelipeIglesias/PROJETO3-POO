@@ -4,8 +4,8 @@
     <table border="1">
         <tr>
         <th><a href="home.jsp"> Home </a></th>
-        <th><a href="amorizaco-americana.jsp"> Amortização Americana </a></th>
-        <th><a href="Amortizacao-constante.jsp"> Amortização Constante </a></th>
+        <th><a href="amortizacao-americano.jsp"> Amortização Americana </a></th>
+        <th><a href="amortizacao-constante.jsp"> Amortização Constante </a></th>
         <th><a href="tabela-price.jsp"> Tabela Price </a></th>
         </tr>
     </table>
