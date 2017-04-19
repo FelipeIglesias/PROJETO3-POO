@@ -32,78 +32,78 @@
         %>
         <div class="container">
             <div class="page-header">
-        <h1>Sistema Americano de Amortização</h1>
+                <h1>Sistema Americano de Amortização</h1>
             </div>
-        <div class="form container" >
-            <table style="spacing: 25px 25px 25px 25px;">
-            <form class="form-horizontal" action="" method="GET">
-                <tr>
-                    <td><label class="control-label">Valor: </label></td>
-                    <td><input type="number" step="any" name="valor" value="<%=valor%>"></td>
-                </tr>
-                <tr>
-                    <td><label for="taxa">Taxa:</label></td>
-                    <td><input type="number" step="any" name="taxa" value="<%=taxa%>"></td>
-                </tr>
-                <tr>
-                <td><label for="prazo">Prazo:</label></td>
-                <td><input type="number" name="prazo" value="<%=prazo%>"></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><button type="submit" class="btn btn-primary pull-right" value="Calcular">Calcular</td>
-                </tr>   
-            </form>
-            </table>
-        </div>
+            <div class="form container" >
+                <table style="spacing: 25px 25px 25px 25px;">
+                    <form class="form-horizontal" action="" method="GET">
+                        <tr>
+                            <td><label class="control-label">Valor: </label></td>
+                            <td><input type="number" step="any" name="valor" value="<%=valor%>"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="taxa">Taxa:</label></td>
+                            <td><input type="number" step="any" name="taxa" value="<%=taxa%>"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="prazo">Prazo:</label></td>
+                            <td><input type="number" name="prazo" value="<%=prazo%>"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="submit" class="btn btn-primary pull-right" value="Calcular">Calcular</td>
+                        </tr>   
+                    </form>
+                </table>
+            </div>
 
-        <% if (valor > 0 && taxa > 0 && prazo > 0) { %>
-        <div class="table container">
-            <h2 class="text-center">Calendário de Amortização</h2>
-            <table class="table">
-                <thead>
+            <% if (valor > 0 && taxa > 0 && prazo > 0) { %>
+            <div class="table container">
+                <h2 class="text-center">Calendário de Amortização</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Mês</th>
+                            <th>Saldo devedor</th>
+                            <th>Amortização</th>
+                            <th>Juros</th>
+                            <th>Parcela</th>
+                        </tr>
+                    </thead>
+                    <%  float saldoDevedor = valor,
+                                jurosMensal = valor * taxa,
+                                jurosTotal = 0,
+                                amortizacao = 0,
+                                amortizacaoTotal = 0,
+                                parcela;
+
+                        for (int mes = 1; mes <= prazo; mes++) {
+                            if (mes == prazo) {
+                                amortizacao = saldoDevedor;
+                            }
+                            saldoDevedor -= amortizacao;
+                            parcela = jurosMensal + amortizacao;
+
+                            jurosTotal += jurosMensal;
+                            amortizacaoTotal += amortizacao;
+                    %>
                     <tr>
-                        <th>Mês</th>
-                        <th>Saldo devedor</th>
-                        <th>Amortização</th>
-                        <th>Juros</th>
-                        <th>Parcela</th>
+                        <td><%=mes%></td>
+                        <td><%=String.format("R$ %.2f", saldoDevedor)%></td>
+                        <td><%=String.format("R$ %.2f", amortizacao)%></td>
+                        <td><%=String.format("R$ %.2f", jurosMensal)%></td>
+                        <td><%=String.format("R$ %.2f", parcela)%></td>
                     </tr>
-                </thead>
-                <%  float saldoDevedor = valor,
-                            jurosMensal = valor * taxa,
-                            jurosTotal = 0,
-                            amortizacao = 0,
-                            amortizacaoTotal = 0,
-                            parcela;
-
-                    for (int mes = 1; mes <= prazo; mes++) {
-                        if (mes == prazo) {
-                            amortizacao = saldoDevedor;
-                        }
-                        saldoDevedor -= amortizacao;
-                        parcela = jurosMensal + amortizacao;
-
-                        jurosTotal += jurosMensal;
-                        amortizacaoTotal += amortizacao;
-                %>
-                <tr>
-                    <td><%=mes%></td>
-                    <td><%=String.format("R$ %.2f", saldoDevedor)%></td>
-                    <td><%=String.format("R$ %.2f", amortizacao)%></td>
-                    <td><%=String.format("R$ %.2f", jurosMensal)%></td>
-                    <td><%=String.format("R$ %.2f", parcela)%></td>
-                </tr>
-                <%  }%>
-                <tfoot>
-                    <tr>
-                        <td colspan="2" align="right">Total</td>
-                        <td><%=String.format("R$ %.2f", amortizacaoTotal)%></td>
-                        <td><%=String.format("R$ %.2f", jurosTotal * prazo)%></td>
-                        <td><%=String.format("R$ %.2f", amortizacaoTotal + jurosTotal)%></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+                    <%  }%>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" align="right">Total</td>
+                            <td><%=String.format("R$ %.2f", amortizacaoTotal)%></td>
+                            <td><%=String.format("R$ %.2f", jurosTotal * prazo)%></td>
+                            <td><%=String.format("R$ %.2f", amortizacaoTotal + jurosTotal)%></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
         <%
             }
