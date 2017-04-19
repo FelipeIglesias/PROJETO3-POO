@@ -30,7 +30,10 @@
 
             }
         %>
+        <div class="container">
+            <div class="page-header">
         <h1>Sistema Americano de Amortização</h1>
+            </div>
         <div class="form container" >
             <table style="spacing: 25px 25px 25px 25px">
             <form class="form-horizontal" action="" method="GET">
@@ -47,7 +50,7 @@
                 <td><input type="number" name="prazo" value="<%=prazo%>"></td>
                 </tr>
                 <tr>
-                    <td><button type="submit" class="btn" value="Calcular">Calcular</td>
+                    <td colspan="2"><button type="submit" class="btn btn-primary pull-right" value="Calcular">Calcular</td>
                 </tr>   
             </form>
             </table>
@@ -55,8 +58,8 @@
 
         <% if (valor > 0 && taxa > 0 && prazo > 0) { %>
         <div class="table container">
-            <h2>Calendário de Amortização</h2>
-            <table border="1">
+            <h2 class="text-center">Calendário de Amortização</h2>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Mês</th>
@@ -100,6 +103,7 @@
                     </tr>
                 </tfoot>
             </table>
+        </div>
         </div>
         <%
             }
