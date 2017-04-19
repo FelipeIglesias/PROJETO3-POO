@@ -12,9 +12,13 @@
          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">		
          <title>Amortização Constante</title>		
      </head>		
-     <body>		
+     <body>
+         <!-- Importa Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+        <!-- Importa tema Bootstra.386 -->
+        <link rel="stylesheet" href="css/bootstrap-theme.css"/>
          <%@include file="WEB-INF/jspf/menu.jspf" %>		
-         		
+         <br>		
          <h1>Calculo de Amortização Constante</h1>		
          <%		
              double empConst = 0;		
@@ -116,6 +120,9 @@
                          		
              </table>		
              		
-             <%@include file="WEB-INF/jspf/rodape.jspf" %>		
+             <%@include file="WEB-INF/jspf/rodape.jspf" %>
+             <!-- Importa jQuery -->
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
      </body>		
  </html>

@@ -3764,7 +3764,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 19px;
 }
 .nav-tabs > li > a::first-letter {
-  color: #ff5555;
+  color: #00aa00;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
@@ -4546,6 +4546,46 @@ a.label:focus {
 .label-danger[href]:focus {
   background-color: #770000;
 }
+
+.hero-unit {
+    padding: 16px 20.8px;
+        padding-top: 16px;
+        padding-right: 20.8px;
+        padding-bottom: 16px;
+        padding-left: 20.8px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #ffffff;
+    background-color: #00aaaa;
+    border: 4px double #ffffff;
+        border-top-color: rgb(255, 255, 255);
+        border-top-style: double;
+        border-top-width: 4px;
+        border-right-color: rgb(255, 255, 255);
+        border-right-style: double;
+        border-right-width: 4px;
+        border-bottom-color: rgb(255, 255, 255);
+        border-bottom-style: double;
+        border-bottom-width: 4px;
+        border-left-color: rgb(255, 255, 255);
+        border-left-style: double;
+        border-left-width: 4px;
+        border-image-source: initial;
+        border-image-slice: initial;
+        border-image-width: initial;
+        border-image-outset: initial;
+        border-image-repeat: initial;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+    box-shadow: 0 0 0 4px #00aaaa;
+}
+
 .badge {
   display: inline-block;
   min-width: 10px;

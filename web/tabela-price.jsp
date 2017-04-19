@@ -7,7 +7,12 @@
         <title>Tabela Price</title>
     </head>
     <body>
+        <!-- Importa Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+        <!-- Importa tema Bootstra.386 -->
+        <link rel="stylesheet" href="css/bootstrap-theme.css"/>
         <%@include file="WEB-INF/jspf/menu.jspf" %>
+        <br>
         <%
             double saldoDevedor = 0;
             int periodo = 0;
@@ -104,5 +109,8 @@
                 <%}%>
             </table>
             <%@include file="WEB-INF/jspf/rodape.jspf" %>
+            <!-- Importa jQuery -->
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
     </body>
 </html>

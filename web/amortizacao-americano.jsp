@@ -10,60 +10,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sistema Americano de Amortização</title>
-        <style>
-            body {
-                font-family: sans-serif;
-            }
-            form {
-                margin: 20px 0;
-            }
-            input {
-                font-size: 18px;
-            }
-            label {
-                font-size: 22px;
-                line-height: 35px;
-            }
-            input {
-                margin-right: 30px;
-            }
-            input[type="number"] {
-                padding: 5px 10px;
-                
-                text-align: right;
-                max-width: 100px;
-            }
-            input[type="number"]::-webkit-outer-spin-button,
-            input[type="number"]::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
-            input[type="number"] {
-                -moz-appearance: textfield;
-            }
-            .btn-enviar {
-                display: inline-block;
-                padding: 7px 20px;
-                background-color: #111;
-                color: #fff;
-                border: 1px solid #fff;
-                border-radius: 5px;
-            }
-            table {
-                border-collapse: collapse;
-            }
-
-            td,th {
-                padding: 5px 20px;
-                text-align: right;
-            }
-
-            tfoot {
-                font-weight: bold;
-            }
-        </style>
+        <!-- Importa Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+        <!-- Importa tema Bootstra.386 -->
+        <link rel="stylesheet" href="css/bootstrap-theme.css"/>
     </head>
     <body>
+        <%@include file="WEB-INF/jspf/menu.jspf" %>
+        <br>
+        <br>
         <%
             float valor = 0, taxa = 0;
             int prazo = 0;
@@ -76,19 +31,26 @@
             }
         %>
         <h1>Sistema Americano de Amortização</h1>
-        <div class="form container">
-            <form action="" method="GET">
-                <label for="valor">Valor:</label>
-                <input type="number" step="any" name="valor" value="<%=valor%>">
-
-                <label for="taxa">Taxa:</label>
-                <input type="number" step="any" name="taxa" value="<%=taxa%>">
-
-                <label for="prazo">Prazo:</label>
-                <input type="number" name="prazo" value="<%=prazo%>">
-
-                <input type="submit" class="btn-enviar" value="Calcular">
+        <div class="form container" >
+            <table style="spacing: 25px 25px 25px 25px">
+            <form class="form-horizontal" action="" method="GET">
+                <tr>
+                    <td><label class="control-label">Valor: </label></td>
+                    <td><input type="number" step="any" name="valor" value="<%=valor%>"></td>
+                </tr>
+                <tr>
+                    <td><label for="taxa">Taxa:</label></td>
+                    <td><input type="number" step="any" name="taxa" value="<%=taxa%>"></td>
+                </tr>
+                <tr>
+                <td><label for="prazo">Prazo:</label></td>
+                <td><input type="number" name="prazo" value="<%=prazo%>"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" class="btn" value="Calcular">Calcular</td>
+                </tr>   
             </form>
+            </table>
         </div>
 
         <% if (valor > 0 && taxa > 0 && prazo > 0) { %>
@@ -142,5 +104,8 @@
         <%
             }
         %>
+        <%@include file="WEB-INF/jspf/rodape.jspf" %>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
     </body>
 </html>
