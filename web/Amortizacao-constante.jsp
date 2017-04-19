@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" import="java.text.DecimalFormat"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,14 +13,22 @@
         <title>Amortização Constante</title>
     </head>
     <body>
-        <h1>Calculo de Amortização Constante</h1>
+        <%@include file="WEB-INF/jspf/menu.jspf" %>
         
+        <h1>Calculo de Amortização Constante</h1>
         <%
             double empConst = 0;
             int perConst = 0;
             double jurConst = 0;
             double amorConst = 0;
             double parConst = 0;
+            double jurosParcela = 0;
+            double jurosTotal = 0;
+            double parcelaMes = 0;
+            double totalAmorConst = 0;   
+            
+            DecimalFormat decimal = new DecimalFormat("#.##");
+
             try{
                 empConst= Double.parseDouble(request.getParameter("emprestimoConst"));
                 perConst = Integer.parseInt(request.getParameter("periodoConst"));
@@ -57,15 +66,56 @@
             
             <table border="1">
                 <tr>
-                    <th>Período</th>
-                    <th>Empréstimo</th>
-                    <th>Parcela</th>
-                    <th>Juros</th>
-                    <th>Amortização</th>
+                    <th> Período </th>
+                    <th> Empréstimo </th>
+                    <th> Amortização </th>
+                    <th> Juros </th>
+                    <th> Amortização + Juros </th>
                 </tr>
-               
-                    <tr>
+            
+                <% 
+            amorConst = empConst / perConst;
+            jurConst = jurConst / 100;
+            int aux = 0;
+            for(int i = 0; i<= perConst; i++){%>
+  <tr>
+                    <td><%=i%></td>
+                    <td>R$ <%=empConst%></td>
+                    <% 
+                   if (i == 0){%>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <%}
+                   else {%>
+                        <td>R$ <%=decimal.format(amorConst)%></td>
+                        <td>R$ <%=decimal.format(jurosParcela)%></td>
+                        <td>R$ <%=decimal.format(parcelaMes)%></td>
+                        <%}%>
+            <% if(i > 0 &&  i == perConst){%>
+           <% amorConst = amorConst * i; %>
+         
+           <td><b>TOTAL<b></td>
+         <td>--</td>
+         <td>R$ <%=decimal.format(amorConst)%>      </td>
+         <td>R$ <%=decimal.format(jurosTotal)%>     </td>
+         <td>R$ <%=decimal.format(totalAmorConst)%> </td>
+         <%}%>        
+           
+         <%   jurosParcela = empConst * jurConst;
+            empConst = empConst - amorConst;
+            jurosTotal = jurosTotal + jurosParcela;
+            parcelaMes = jurosParcela + amorConst;
+            totalAmorConst = totalAmorConst + parcelaMes;
+  
+             aux = i; %>
+           
+         <%} %>
+           
+            </tr>
                         
             </table>
+            
+            <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>
