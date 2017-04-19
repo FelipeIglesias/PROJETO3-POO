@@ -3,6 +3,29 @@
 <link rel="stylesheet" href="css/bootstrap.css"/>
 <!-- Importa tema Bootstra.386 -->
 <link rel="stylesheet" href="css/bootstrap-theme.css"/>
+
+<style>
+    body {
+        padding-bottom: 40px;
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: inherit;
+        padding: 20px;
+    }
+    td {
+        padding: 6px;
+    }
+    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+</style>
         
 <ul class="nav nav-tabs">
   <li class="active"><a href="home.jsp" style="color: #00aa00"> Home </a></li>

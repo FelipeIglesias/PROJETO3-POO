@@ -35,7 +35,7 @@
         <h1>Sistema Americano de Amortização</h1>
             </div>
         <div class="form container" >
-            <table style="spacing: 25px 25px 25px 25px">
+            <table style="spacing: 25px 25px 25px 25px;">
             <form class="form-horizontal" action="" method="GET">
                 <tr>
                     <td><label class="control-label">Valor: </label></td>
